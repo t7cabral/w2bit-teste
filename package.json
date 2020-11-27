@@ -2,6 +2,11 @@
   "name": "w2bit",
   "version": "1.0.0",
   "description": "Teste de avaliação prática para vaga na W2Bit de backend.",
+  "engines": {
+    "yarn": "1.19.0",
+    "node": "14.15.1",
+    "npm": "6.14.8"
+  },
   "main": "src/index.js",
   "private": true,
   "scripts": {
