@@ -4,7 +4,8 @@ const db = require('../database');
 
 module.exports = {
   create,
-  upload
+  upload,
+  listAll
 }
 
 async function create (req, res) {
@@ -17,7 +18,7 @@ async function create (req, res) {
     return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
       errorCode: 'ERR_500_USER_CREATE',
       message: err.message
-    })
+    });
   }  
 }
 
@@ -26,4 +27,19 @@ function upload (req, res) {
   res.status(HttpStatus.OK).json({
     avatar: `${process.env.APP_URL}/${file.path}`
   });
+}
+
+async function listAll (req, res) {
+  try {
+    const users = await db.select('id', 'name', 'photoUrl').from('user');
+    return res.status(HttpStatus.OK).json({
+      total: users.length,
+      users
+    });
+  } catch (err) {
+    return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+      errorCode: 'ERR_500_USER_LIST_ALL',
+      message: err.message
+    });
+  }
 }
