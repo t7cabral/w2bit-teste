@@ -3,15 +3,17 @@
 const HttpStatus = require('http-status-codes');
 const router = require('express').Router();
 const upload = require('multer')({ dest: process.env.APP_STORAGE });
+const userController = require('../controllers/user');
+const validation_data_create_user = require('../middlewares/validation_data_create_user');
 
 router.post('/avatar',
   upload.single('image'),
-  (req, res) => {
-    const file = req.file;
-    res.status(HttpStatus.OK).json({
-        avatar: `${process.env.APP_URL}/${file.path}`
-    });
-  }
+  userController.upload
+);
+
+router.post('/',
+  validation_data_create_user,
+  userController.create
 );
 
 module.exports = router;
