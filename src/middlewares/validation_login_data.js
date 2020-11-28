@@ -1,9 +1,14 @@
 'use strict';
 
 const HttpStatus = require('http-status-codes');
+const db = require('../database');
 
-module.exports = (req, res, next) => {
+
+module.exports = async (req, res, next) => {
   const { login=null, password=null } = req.body;
+
+  const users = await db.select().from('user');
+  console.log(users);
 
   if(login || password) return next();
 
