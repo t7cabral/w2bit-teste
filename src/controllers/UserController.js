@@ -19,7 +19,7 @@ async function create (req, res) {
       errorCode: 'ERR_500_USER_CREATE',
       message: err.message
     });
-  }  
+  }
 }
 
 function upload (req, res) {
@@ -31,7 +31,7 @@ function upload (req, res) {
 
 async function listAll (req, res) {
   try {
-    const users = await db.select('id', 'name', 'photoUrl').from('user');
+    const users = await db.select('*').from('user');
     return res.status(HttpStatus.OK).json({
       total: users.length,
       users
