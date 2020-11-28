@@ -13,13 +13,12 @@ async function login (req, res) {
   const {login, password} = pick(req.body, ['login', 'password']);
 
   try {
-    const user = await db('user').where({login, password}).select('id', 'name', 'photoUrl', 'login', 'password').first();
+    const user = await db('user').where({login, password}).select('id', 'name', 'photoUrl', 'login').first();
     
     if(!user) throw new AuthException("ERR_LOGIN_INVALID_CREDENTIALS", "Login and/or password invalid.");
     
     const token = await AuthServices.generateUserToken(user);
 
-    delete user.password;
     delete user.login;
 
     return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({token, user});
