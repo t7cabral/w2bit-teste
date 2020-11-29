@@ -52,11 +52,11 @@ async function listAll (req, res) {
 
 async function create (req, res) {
   const actingUser = res.locals.actingUser;
-  let dataBus = pick(req.body, ['plate', 'year', 'model', 'seats']);
+  let dataBus = pick(req.body, ['plate', 'year', 'model', 'seats', 'created_at']);
   dataBus.userId = actingUser.id;
 
   try {
-    const bus = await db.insert(dataBus).into('bus').returning('*');
+    const bus = await db.insert(dataBus).into('bus').returning(['id', 'plate', 'year', 'model', 'seats', 'created_at']);
     return res.status(HttpStatus.CREATED).json(bus);
   } catch (err) {
     return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
@@ -67,17 +67,17 @@ async function create (req, res) {
 }
 
 async function updateOne (req, res) {
+  const actingUser = res.locals.actingUser;
   const busId = req.params.id;
   const dataBus = pick(req.body, ['plate', 'year', 'model', 'seats']);
 
   try {
     const bus = await db('bus')
-    .where({id: busId})
-    .first()
+      .where({userId: actingUser.id, id: busId})
+      .first()
       .whereNull('deleted_at')
-      .update(dataBus, ['plate', 'year', 'model', 'seats'])
-      
-      // .select('id', 'plate', 'year', 'model', 'seats', 'created_at');
+      .update(dataBus, ['plate', 'year', 'model', 'seats', 'created_at']);
+
     return res.status(HttpStatus.OK).json(bus[0]);
   } catch (err) {
     return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
@@ -85,24 +85,15 @@ async function updateOne (req, res) {
       message: err.message
     });
   }
-
-
-  console.log('bus_id: ', bus_id, '\nbus_data:', x);
-
-
-  return res.status(HttpStatus.OK).json('Rota updated bus');
-
-
-
-
-
 }
 
 async function deleteOne (req, res) {
+  const actingUser = res.locals.actingUser;
   const busId = req.params.id;
+
   try {
     await db('bus')
-      .where({id: busId})
+      .where({userId: actingUser.id, id: busId})
       .whereNull('deleted_at')
       .update({
         deleted_at: db.fn.now(6)

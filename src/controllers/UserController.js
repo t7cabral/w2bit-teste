@@ -1,4 +1,5 @@
 'use strict';
+
 const HttpStatus = require('http-status-codes');
 const db = require('../database');
 

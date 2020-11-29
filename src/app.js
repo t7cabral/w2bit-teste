@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const routerAuth = require('./routes/auth');
 const routerUser = require('./routes/user');
 const routerBus = require('./routes/bus');
+const routerPassenger = require('./routes/passenger');
 const extract_token_info = require('./middlewares/extract_token_info');
 const path = require('path');
 const cors = require('cors');
@@ -37,5 +38,6 @@ app.use(extract_token_info);
 app.use('/auth', routerAuth);
 app.use('/user', routerUser);
 app.use('/bus', routerBus);
+app.use('/passenger', routerPassenger);
 
 module.exports = app;
