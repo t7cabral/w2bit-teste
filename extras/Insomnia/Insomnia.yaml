@@ -1,6 +1,6 @@
 _type: export
 __export_format: 4
-__export_date: 2020-11-29T14:57:01.684Z
+__export_date: 2020-11-29T16:28:00.067Z
 __export_source: insomnia.desktop.app:v7.0.1
 resources:
   - _id: req_0e92123abf8540058967723fa96f607b
@@ -155,9 +155,9 @@ resources:
       mimeType: application/json
       text: |-
         {
-        	"busId": 1,
+        	"busId": 2,
         	"passengerId": 1,
-        	"seat": 1
+        	"seat": 10
         }
     created: 1606620372606
     description: >+
@@ -276,7 +276,7 @@ resources:
     isPrivate: false
     metaSortKey: -1606582837615.25
     method: POST
-    modified: 1606661363489
+    modified: 1606666688570
     name: /ticket
     parameters: []
     parentId: fld_ee062a65db2247ed802622409da58dfc
@@ -339,9 +339,9 @@ resources:
       mimeType: application/json
       text: |-
         {
-        	"cpf": "00100100100",
-        	"name": "LUCAS SILVA",
-        	"age": 27
+        	"cpf": "00200200200",
+        	"name": "ALICE BARBOSA",
+        	"age": 3
         }
     created: 1606611216821
     description: |-
@@ -405,7 +405,7 @@ resources:
     isPrivate: false
     metaSortKey: -1606582837521.5
     method: POST
-    modified: 1606661593701
+    modified: 1606666649100
     name: /passenger
     parameters: []
     parentId: fld_216d3347bf7742a1a74d892a5890d935
@@ -540,7 +540,7 @@ resources:
     isPrivate: false
     metaSortKey: -1606582837446.5
     method: GET
-    modified: 1606661628389
+    modified: 1606666676650
     name: /passenger:id
     parameters: []
     parentId: fld_216d3347bf7742a1a74d892a5890d935
@@ -599,7 +599,7 @@ resources:
     body:
       mimeType: multipart/form-data
       params:
-        - fileName: /home/thiago/Downloads/D_NQ_NP_896514-MLB31205693118_062019-O.jpg
+        - fileName: /home/thiago/Imagens/my-avatar.jpeg
           id: pair_fe595a22a7ea4995afdcf3fbae290eae
           name: image
           type: file
@@ -657,7 +657,7 @@ resources:
     isPrivate: false
     metaSortKey: -1606528115212
     method: POST
-    modified: 1606597496958
+    modified: 1606666256881
     name: /user/avatar
     parameters: []
     parentId: fld_bd57b260440c490f843129c7b4f94d56
@@ -684,11 +684,11 @@ resources:
       mimeType: application/json
       text: >-
         {
-          "name": "ALICE BARBOSA",
-          "photoUrl": "http://localhost:3000/avatar/8de2a6c86d6f157e23f54bfcf6faed46",
+          "name": "THIAGO A. CABRAL",
+          "photoUrl": "https://w2bit-teste.herokuapp.com/avatar/d77e48916e3be9e17668f4d00c949605",
           "addressUf": "TO",
           "addressCity": "MIRACEMA",
-          "login": "alice",
+          "login": "thiago",
           "password": "123456"
         }
     created: 1606559136054
@@ -756,7 +756,7 @@ resources:
     isPrivate: false
     metaSortKey: -1606528115162
     method: POST
-    modified: 1606613227497
+    modified: 1606666362795
     name: /user
     parameters: []
     parentId: fld_bd57b260440c490f843129c7b4f94d56
@@ -963,10 +963,10 @@ resources:
       mimeType: application/json
       text: |-
         {
-        	"plate": "BBB-1234",
-        	"year": 2020,
-        	"model": "Marcopolo",
-        	"seats": 20
+        	"plate": "CCC-3333",
+        	"year": 2018,
+        	"model": "Neobus XX",
+        	"seats": 40
         }
     created: 1606590496688
     description: |-
@@ -1016,7 +1016,7 @@ resources:
     isPrivate: false
     metaSortKey: -1606582837534
     method: POST
-    modified: 1606613638652
+    modified: 1606666539682
     name: /bus
     parameters: []
     parentId: fld_8c24a0794a7f47d0a559ea667a3960d8
@@ -1240,16 +1240,15 @@ resources:
     color: null
     created: 1570640717513
     data:
-      baseUrl: http://localhost:3000
-      token: Bearer
-        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IlRISUFHTyBDQUJSQUwiLCJwaG90b1VybCI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMC9hdmF0YXIvOGRlMmE2Yzg2ZDZmMTU3ZTIzZjU0YmZjZjZmYWVkNDYiLCJsb2dpbiI6InRoaWFnbyIsImlhdCI6MTYwNjYxMzczOH0.m04CmHcNTj1gR6jctPrHXnd_ZYl34QvZlTaqbo4yREg
+      baseUrl: https://w2bit-teste.herokuapp.com
+      token: Bearer xxx.xxx.xxx
     dataPropertyOrder:
       "&":
         - baseUrl
         - token
     isPrivate: false
     metaSortKey: 1570640717513
-    modified: 1606613757514
+    modified: 1606667227801
     name: Base Environment
     parentId: wrk_fbfab78c51ed4f409f1b3cc6c24aa11d
     _type: environment
