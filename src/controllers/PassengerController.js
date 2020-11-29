@@ -44,7 +44,7 @@ async function updateOne (req, res) {
     return res.status(HttpStatus.OK).json(passenger[0]);
   } catch (err) {
     return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
-      errorCode: 'ERR_500_BUS_DELETE_ONE',
+      errorCode: 'ERR_500_PASSENGER_DELETE_ONE',
       message: err.message
     });
   }
