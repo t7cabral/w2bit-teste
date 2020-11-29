@@ -29,13 +29,19 @@ module.exports = async (req, res, next) => {
 
     ]);
 
+    if(!bus) throw new TicketException("ERR_BUS_NOT_FOUND", "Bus not found!");
+    if(!passenger) throw new TicketException("ERR_PASSENGER_NOT_FOUND", "Passenger not found!");
+
+    await validateSeatAvailability (actingUser, bus, ticketData.seat);
+
     res.locals.bus = bus;
     res.locals.passenger = passenger;
     return next();
   } catch (err) {
+    if(err instanceof TicketException) return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(err);
     return res.status(HttpStatus.BAD_REQUEST).json({
-      errorCode: 'ERR_TICKET_CREATE_VALIDATION',
-      message: err.message
+      errorCode: 'ERR_TICKET_500_CREATE',
+      message: "The request failed!"
     });
   }
 }
@@ -50,9 +56,34 @@ function checkFieldValidation (busId, passengerId, seat) {
     if(!seat || !Number.isInteger(seat) || seat === 0) invalidFields.push('seat');
 
     return invalidFields.length === 0
-      ? resolve(true)
-      : reject(Error(`Invalid fields: ${invalidFields.join(', ')}`));
+      ? resolve()
+      : reject( new TicketException("ERR_TICKET_INVALID_SEAT", `Invalid fields: ${invalidFields.join(', ')}`));
   });
 }
 
+// validate seat availability
+async function validateSeatAvailability (actingUser, bus, seat) {
+  try {
+    if(seat < 1 || seat > bus.seats) throw new TicketException("ERR_TICKET_INVALID_SEAT", "The seat number is invalid!");
 
+    const availableSeat = await db.where({
+      userId: actingUser.id,
+      busId: bus.id,
+      seat
+    })
+    .select('*')
+    .from('ticket')
+    .whereNull('deleted_at')
+    .first();
+
+    if(availableSeat) throw new TicketException("ERR_TICKET_SEAT_NOT_AVAILABLE", "Seat not available!");
+    return;
+  } catch (err) {
+    throw err;
+  }
+}
+
+function TicketException(errorCode, message) {
+  this.errorCode = errorCode;
+  this.message = message
+}

@@ -1,0 +1,1291 @@
+_type: export
+__export_format: 4
+__export_date: 2020-11-29T14:57:01.684Z
+__export_source: insomnia.desktop.app:v7.0.1
+resources:
+  - _id: req_0e92123abf8540058967723fa96f607b
+    authentication: {}
+    body: {}
+    created: 1606651311883
+    description: >-
+      ### GET /ticket/all
+
+
+      | | |
+
+      |-|-|
+
+      |`NOTA` | Esta rota de listagem não foi solicitada no desafio. No entanto, foi criada para que os avaliadores possam listar os tickets "passagens" cadastrados via `POST /ticket`. **Tickets removidos não serão listados.**|
+
+
+      ---
+
+
+      #### Detalhes:
+
+
+      DESCRIÇÃO | VALOR
+
+      ----------|------
+
+      Rota publica|Não
+
+
+      #### Parametros:
+
+      Nenhum
+
+
+      #### Exemplo:
+
+
+      Listar  todos os registro:
+
+
+      **URL:**
+
+      ```
+
+      GET /ticket/all
+
+      ```
+
+
+      **Resposta**
+
+      ```
+
+      {
+        "total": 2,
+        "tickets": [
+          {
+            "id": 1,
+            "seat": 1,
+            "created_at": "2020-11-29T17:48:04.051Z",
+            "passenger": {
+              "id": 1,
+              "cpf": "11122233344",
+              "name": "Alex Silva",
+              "age": 11,
+              "created_at": "2020-11-29T04:46:41.156Z",
+              "updated_at": "2020-11-29T04:58:06.212Z"
+            },
+            "bus": {
+              "id": 1,
+              "plate": "AAA-1122",
+              "year": 2019,
+              "model": "Neobus",
+              "seats": 15,
+              "created_at": "2020-11-29T04:33:44.089Z"
+            }
+          },
+          {
+            "id": 2,
+            "seat": 15,
+            "created_at": "2020-11-29T17:48:13.545Z",
+            "passenger": {
+              "id": 2,
+              "cpf": "99999999999",
+              "name": "Ricardo Oliveira",
+              "age": 11,
+              "created_at": "2020-11-29T04:47:23.291Z",
+              "updated_at": "2020-11-29T04:58:29.017Z"
+            },
+            "bus": {
+              "id": 1,
+              "plate": "AAA-1122",
+              "year": 2019,
+              "model": "Neobus",
+              "seats": 15,
+              "created_at": "2020-11-29T04:33:44.089Z"
+            }
+          }
+        ]
+      }
+
+      ```
+    headers:
+      - id: pair_604dfd51ac114791ae3387dc6d1b26f3
+        name: authorization
+        value: "{{ token  }}"
+    isPrivate: false
+    metaSortKey: -1606582837665.25
+    method: GET
+    modified: 1606661330702
+    name: /ticket/all
+    parameters: []
+    parentId: fld_ee062a65db2247ed802622409da58dfc
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ baseUrl  }}/ticket/all"
+    _type: request
+  - _id: fld_ee062a65db2247ed802622409da58dfc
+    created: 1606620361115
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1606620361115
+    modified: 1606620361115
+    name: ticket
+    parentId: fld_2680bce698a6424899e3b048519452ef
+    _type: request_group
+  - _id: fld_2680bce698a6424899e3b048519452ef
+    created: 1606528115312
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1606528115312
+    modified: 1606528115312
+    name: w2bit-teste
+    parentId: wrk_fbfab78c51ed4f409f1b3cc6c24aa11d
+    _type: request_group
+  - _id: wrk_fbfab78c51ed4f409f1b3cc6c24aa11d
+    created: 1570640717474
+    description: ""
+    modified: 1570640717474
+    name: Insomnia
+    parentId: null
+    _type: workspace
+  - _id: req_b05fdc6470df4610b8efb9df51004365
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"busId": 1,
+        	"passengerId": 1,
+        	"seat": 1
+        }
+    created: 1606620372606
+    description: >+
+      ### POST /ticket
+
+
+      #### Detalhes:
+
+
+      DESCRIÇÃO | VALOR
+
+      ----------|------
+
+      Rota publica|Não
+
+
+      #### Parametros:
+
+
+      NOME | TIPO | OBRIGATÓRIO
+
+      -----|------|------------
+
+      busId|Integer|**Sim**
+
+      passengerId|Integer|**Sim**
+
+      seat|Integer|**Sim**
+
+
+
+      #### Exemplo:
+
+
+      Criando um novo registro:
+
+
+      **URL:**
+
+      ```
+
+      POST /ticket
+
+      ```
+
+      **Body:**
+
+      ```json
+
+      {
+      	"busId": 2,
+      	"passengerId": 5,
+      	"seat": 7
+      }
+
+      ```
+
+
+
+      **Resposta:**
+
+      ```json
+
+      {
+        "id": 1,
+        "seat": 7,
+        "created_at": "2020-11-29T13:32:44.851Z",
+        "passenger": {
+          "id": 5,
+          "cpf": "552525252  ",
+          "name": "Yuri Silva",
+          "age": 20,
+          "created_at": "2020-11-29T04:48:44.437Z",
+          "updated_at": "2020-11-29T05:06:38.451Z"
+        },
+        "bus": {
+          "id": 2,
+          "plate": "BBB-1234",
+          "year": 2020,
+          "model": "Marcopolo",
+          "seats": 20,
+          "created_at": "2020-11-29T04:34:00.392Z"
+        }
+      }
+
+      ```
+
+
+      #### Código Erros:
+
+
+      CÓDIGO | MENSAGEM | DESCRIÇÃO
+
+      -------|----------|----------
+
+      ERR_TICKET_500_CREATE | The request failed! | Erro diverso ao salvar o regisro.
+
+      ERR_TICKET_INVALID_SEAT | Invalid fields: ?, ?, ?... | Erro na validação dos parametros enviados.
+
+      ERR_TICKET_INVALID_SEAT | The seat number is invalid! | Número do assento inválido.
+
+      ERR_TICKET_SEAT_NOT_AVAILABLE | Seat not available! | Número do assento indisponível.
+
+      ERR_BUS_NOT_FOUND | Bus not found! | Cadastro do **ônibus** não foi encontrado.
+
+      ERR_PASSENGER_NOT_FOUND | Passenger not found! | Cadastro do **passageiro** não foi encontrado.
+
+
+    headers:
+      - id: pair_c6c66f3f210f42a69a588d699717c808
+        name: authorization
+        value: "{{ token  }}"
+      - id: pair_f3bcf78d4e16490abf0ebf835eade023
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1606582837615.25
+    method: POST
+    modified: 1606661363489
+    name: /ticket
+    parameters: []
+    parentId: fld_ee062a65db2247ed802622409da58dfc
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ baseUrl  }}/ticket"
+    _type: request
+  - _id: req_ae668a93438a4c9092232b071a75ae14
+    authentication: {}
+    body: {}
+    created: 1606650016569
+    description: |-
+      ### DELETE /ticket/:id
+
+      #### Detalhes:
+
+      DESCRIÇÃO | VALOR
+      ----------|------
+      Rota publica|Não
+
+      #### Parametros:
+
+      NOME | TIPO | OBRIGATÓRIO
+      -----|------|------------
+      id|int|**Sim**
+
+
+      #### Exemplo:
+
+      Deletando o registro **id** = **3**
+
+      **URL:**
+      ```
+      DELETE /ticket/3
+      ```
+    headers:
+      - id: pair_c6c66f3f210f42a69a588d699717c808
+        name: authorization
+        value: "{{ token  }}"
+    isPrivate: false
+    metaSortKey: -1606582837565.25
+    method: DELETE
+    modified: 1606661694042
+    name: /ticket/:id
+    parameters: []
+    parentId: fld_ee062a65db2247ed802622409da58dfc
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ baseUrl  }}/ticket/1"
+    _type: request
+  - _id: req_5a20fa597eaf473081ee4e3c7ec1f5e1
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"cpf": "00100100100",
+        	"name": "LUCAS SILVA",
+        	"age": 27
+        }
+    created: 1606611216821
+    description: |-
+      ### POST /passenger
+
+      #### Detalhes:
+
+      DESCRIÇÃO | VALOR
+      ----------|------
+      Rota publica|Não
+
+      #### Parametros:
+
+      NOME | TIPO | OBRIGATÓRIO
+      -----|------|------------
+      cpf|Char(11)|Não
+      name|String(100)|**Sim**
+      age|Integer|Não
+
+
+      #### Exemplo:
+
+      Criando um novo registro:
+
+      **URL:**
+      ```
+      POST /passenger
+      ```
+      **Body:**
+      ```json
+      {
+      	"cpf": "00200200200",
+      	"name": "ALICE OIA",
+      	"age": 2
+      }
+      ```
+
+
+      **Resposta:**
+      ```json
+      [
+        {
+          "userId": 1,
+          "id": 1,
+          "cpf": "00200200200",
+          "name": "ALICE OIA",
+          "age": 2,
+          "created_at": "2020-11-29T04:00:48.880Z",
+          "updated_at": null,
+          "deleted_at": null
+        }
+      ]
+      ```
+    headers:
+      - id: pair_c6c66f3f210f42a69a588d699717c808
+        name: authorization
+        value: "{{ token  }}"
+      - id: pair_f3bcf78d4e16490abf0ebf835eade023
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1606582837521.5
+    method: POST
+    modified: 1606661593701
+    name: /passenger
+    parameters: []
+    parentId: fld_216d3347bf7742a1a74d892a5890d935
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ baseUrl  }}/passenger"
+    _type: request
+  - _id: fld_216d3347bf7742a1a74d892a5890d935
+    created: 1606611197968
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1606574546820
+    modified: 1606611204706
+    name: passenger
+    parentId: fld_2680bce698a6424899e3b048519452ef
+    _type: request_group
+  - _id: req_6b4247d8cdfc4abbbea6fb9a7ed647af
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"cpf": "00100100100",
+        	"name": "LUCAS SILVA",
+        	"age": 1
+        }
+    created: 1606614963730
+    description: |-
+      ### PUT /bus/:id
+
+      #### Detalhes:
+
+      DESCRIÇÃO | VALOR
+      ----------|------
+      Rota publica|Não
+
+      #### Parametros:
+
+      NOME | TIPO | OBRIGATÓRIO
+      -----|------|------------
+      plate|String(10)|Não
+      year|Integer|Não
+      model|String(50)|Não
+      seats|Integer|Não
+
+      #### Exemplo:
+
+      Alterando o **plate** do registro **id** = **3**
+
+      **URL:**
+      ```
+      PUT /bus/3
+      ```
+
+      **Body:**
+      ```json
+      {
+      	"plate": "ABC-1234"
+      }
+      ```
+
+      Alterando o **model e seats** do registro **id** = **1**
+
+      **URL:**
+      ```
+      PUT /bus/1
+      ```
+
+      **Body:**
+      ```json
+      {
+      	"model": "Novo valorMasterbus",
+      	"seats": 11
+      }
+      ```
+    headers:
+      - id: pair_c6c66f3f210f42a69a588d699717c808
+        name: authorization
+        value: "{{ token  }}"
+      - id: pair_f3bcf78d4e16490abf0ebf835eade023
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1606582837471.5
+    method: PUT
+    modified: 1606661605693
+    name: /passenger/:id
+    parameters: []
+    parentId: fld_216d3347bf7742a1a74d892a5890d935
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ baseUrl  }}/passenger/1"
+    _type: request
+  - _id: req_00d3d4823a9d4e1e8c3217397033cf4d
+    authentication: {}
+    body: {}
+    created: 1606618863781
+    description: |-
+      ### GET /passenger:id
+
+      #### Detalhes:
+
+      DESCRIÇÃO | VALOR
+      ----------|------
+      Rota publica|Não
+
+      #### Parametros:
+
+      NOME | TIPO | OBRIGATÓRIO
+      -----|------|------------
+      id|int|**Sim**
+
+      #### Exemplo:
+
+      Listar  o registro **id** = **3**
+
+      **URL:**
+      ```
+      GET /passenger/3
+      ```
+    headers:
+      - id: pair_c6c66f3f210f42a69a588d699717c808
+        name: authorization
+        value: "{{ token  }}"
+    isPrivate: false
+    metaSortKey: -1606582837446.5
+    method: GET
+    modified: 1606661628389
+    name: /passenger:id
+    parameters: []
+    parentId: fld_216d3347bf7742a1a74d892a5890d935
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ baseUrl  }}/passenger/1"
+    _type: request
+  - _id: req_35a770da0cad48eaa4d8534754e99e5a
+    authentication: {}
+    body: {}
+    created: 1606618418279
+    description: |-
+      ### GET /passenger/all
+
+      #### Detalhes:
+
+      DESCRIÇÃO | VALOR
+      ----------|------
+      Rota publica|Não
+
+      #### Parametros:
+      Nenhum
+
+
+      #### Exemplo:
+
+      Listar  todos os registro **"exeto os deletados"**
+
+      **URL:**
+      ```
+      GET /passenger/all
+      ```
+    headers:
+      - id: pair_c6c66f3f210f42a69a588d699717c808
+        name: authorization
+        value: "{{ token  }}"
+    isPrivate: false
+    metaSortKey: -1606582837421.5
+    method: GET
+    modified: 1606618515470
+    name: /passenger/all
+    parameters: []
+    parentId: fld_216d3347bf7742a1a74d892a5890d935
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ baseUrl  }}/passenger/all"
+    _type: request
+  - _id: req_1066503bc6414ca98ccdd7ef4cf84af4
+    authentication: {}
+    body:
+      mimeType: multipart/form-data
+      params:
+        - fileName: /home/thiago/Downloads/D_NQ_NP_896514-MLB31205693118_062019-O.jpg
+          id: pair_fe595a22a7ea4995afdcf3fbae290eae
+          name: image
+          type: file
+          value: ""
+    created: 1606528141863
+    description: |+
+      ### POST /user/avatar
+
+      #### Detalhes:
+
+      DESCRIÇÃO | VALOR
+      ----------|------
+      Rota publica|Sim
+
+      #### Parametros:
+
+      NOME | TIPO | OBRIGATÓRIO
+      -----|------|------------
+      image|File|**Sim**
+
+      #### Exemplo:
+
+      Upload de imagem:
+
+      **URL:**
+      ```
+      GET /user/avatar
+      ```
+
+      **Parametros:**
+      ```
+       Envie um arquivo via multipart form com a propriedade name='image'
+       do elemento HTML.
+      ```
+
+      **Resposta:**
+      ```
+      {
+        "avatar": "http://app_url/avatar/d992576d5f3d2ed2a1c4c5544751e2ea"
+      }
+      ```
+
+
+
+
+
+
+
+
+
+    headers:
+      - id: pair_58ece583f3784c709c28195df85c9934
+        name: Content-Type
+        value: multipart/form-data
+    isPrivate: false
+    metaSortKey: -1606528115212
+    method: POST
+    modified: 1606597496958
+    name: /user/avatar
+    parameters: []
+    parentId: fld_bd57b260440c490f843129c7b4f94d56
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ baseUrl  }}/user/avatar"
+    _type: request
+  - _id: fld_bd57b260440c490f843129c7b4f94d56
+    created: 1606528122862
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1606574546770
+    modified: 1606597792402
+    name: user
+    parentId: fld_2680bce698a6424899e3b048519452ef
+    _type: request_group
+  - _id: req_0507b1eb6f3b40d8920a04ce87b22b84
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: >-
+        {
+          "name": "ALICE BARBOSA",
+          "photoUrl": "http://localhost:3000/avatar/8de2a6c86d6f157e23f54bfcf6faed46",
+          "addressUf": "TO",
+          "addressCity": "MIRACEMA",
+          "login": "alice",
+          "password": "123456"
+        }
+    created: 1606559136054
+    description: |-
+      ### POST /user
+
+      #### Detalhes:
+
+      DESCRIÇÃO | VALOR
+      ----------|------
+      Rota publica|Sim
+
+      #### Parametros:
+
+      NOME | TIPO | OBRIGATÓRIO
+      -----|------|------------
+      name|String(100)|**Sim**
+      photoUrl|String(200)|Não
+      addressUf|String(2)|Não
+      addressCity|String(25)|Não
+      login|String(20)|**Sim**
+      password|String(20)|**Sim**
+
+
+      #### Exemplo:
+
+      Criando um novo usuário:
+
+      **URL:**
+      ```
+      POST /user
+      ```
+
+      **Body:**
+      ```json
+      {
+        "name": "Maria Joaquina Pereira",
+        "photoUrl": "http://app_url/avatar/8de2a6c86d6f157e23f54bfcf6faed46",
+        "addressUf": "GO",
+        "addressCity": "Caldas Novas",
+        "login": "mariajp",
+        "password": "123456"
+      }
+      ```
+
+      **Resposta:**
+      ```
+      [
+        {
+          "id": 589,
+          "name": "Maria Joaquina Pereira",
+          "photoUrl": "http://app_url/avatar/8de2a6c86d6f157e23f54bfcf6faed46",
+          "addressUf": "GO",
+          "addressCity": "Caldas Novas",
+          "login": "mariajp",
+          "password": "123456",
+          "created_at": "2020-11-29T00:08:28.352Z"
+        }
+      ]
+      ```
+    headers:
+      - id: pair_58ece583f3784c709c28195df85c9934
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1606528115162
+    method: POST
+    modified: 1606613227497
+    name: /user
+    parameters: []
+    parentId: fld_bd57b260440c490f843129c7b4f94d56
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ baseUrl  }}/user"
+    _type: request
+  - _id: req_15b1c4bbecc644e8b23ec9d7d56aa50c
+    authentication: {}
+    body: {}
+    created: 1606578091693
+    description: >-
+      ### GET /user/all
+
+
+      | | |
+
+      |-|-|
+
+      |`NOTA` | Esta rota de listagem não foi solicitada no desafio. No entanto, foi criada para que os avaliadores possam listar os usuários cadastrados via `POST /user`. Também não foi aplicado cifragem no armazenamento do **password** na base de dados, para que seja possível obter **login** e **password** de acesso dos usuários.|
+
+
+      ---
+
+
+      #### Detalhes:
+
+
+      DESCRIÇÃO | VALOR
+
+      ----------|------
+
+      Rota publica|Não
+
+
+      #### Parametros:
+
+      Nenhum
+
+
+      #### Exemplo:
+
+
+      Listar  todos os registro:
+
+
+      **URL:**
+
+      ```
+
+      GET /user/all
+
+      ```
+
+
+      **Resposta**
+
+      ```
+
+      {
+        "total": 2,
+        "users": [
+          {
+            "id": 1,
+            "name": "THIAGO CABRAL",
+            "photoUrl": null,
+            "addressUf": "TO",
+            "addressCity": "MIRACEMA",
+            "login": "tcabral",
+            "password": "123456"
+          },
+          {
+            "id": 1,
+            "name": "ALICE BARBOSA",
+            "photoUrl": "http://app_url/avatar/S2X54FG5D411A5S4S52",
+            "addressUf": "TO",
+            "addressCity": "CARIRI",
+            "login": "aliceb",
+            "password": "123456"
+          }
+        ]
+      }
+
+      ```
+    headers: []
+    isPrivate: false
+    metaSortKey: -1606528115137
+    method: GET
+    modified: 1606651352852
+    name: /user/all
+    parameters: []
+    parentId: fld_bd57b260440c490f843129c7b4f94d56
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ baseUrl  }}/user/all"
+    _type: request
+  - _id: req_7143656417de4379a0c3a7d0ebfbac89
+    authentication: {}
+    body: {}
+    created: 1606582837484
+    description: |-
+      ### GET /bus/:id
+
+      #### Detalhes:
+
+      DESCRIÇÃO | VALOR
+      ----------|------
+      Rota publica|Não
+
+      #### Parametros:
+
+      NOME | TIPO | OBRIGATÓRIO
+      -----|------|------------
+      id|int|**Sim**
+
+      #### Exemplo:
+
+      Listar  o registro **id** = **3**
+
+      **URL:**
+      ```
+      GET /bus/3
+      ```
+    headers:
+      - id: pair_c6c66f3f210f42a69a588d699717c808
+        name: authorization
+        value: "{{ token  }}"
+    isPrivate: false
+    metaSortKey: -1606582837584
+    method: GET
+    modified: 1606613796472
+    name: /bus/:id
+    parameters: []
+    parentId: fld_8c24a0794a7f47d0a559ea667a3960d8
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ baseUrl  }}/bus/1"
+    _type: request
+  - _id: fld_8c24a0794a7f47d0a559ea667a3960d8
+    created: 1606582824692
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1606574546720
+    modified: 1606597786739
+    name: bus
+    parentId: fld_2680bce698a6424899e3b048519452ef
+    _type: request_group
+  - _id: req_9e87fe076827419c9c992c8d5ab5c2a1
+    authentication: {}
+    body: {}
+    created: 1606583062100
+    description: |-
+      ### GET /bus/all
+
+      #### Detalhes:
+
+      DESCRIÇÃO | VALOR
+      ----------|------
+      Rota publica|Não
+
+      #### Parametros:
+      Nenhum
+
+
+      #### Exemplo:
+
+      Listar  todos os registro **"exeto os deletados"**
+
+      **URL:**
+      ```
+      GET /bus/all
+      ```
+    headers:
+      - id: pair_c6c66f3f210f42a69a588d699717c808
+        name: authorization
+        value: "{{ token  }}"
+    isPrivate: false
+    metaSortKey: -1606582837559
+    method: GET
+    modified: 1606596177758
+    name: /bus/all
+    parameters: []
+    parentId: fld_8c24a0794a7f47d0a559ea667a3960d8
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ baseUrl  }}/bus/all"
+    _type: request
+  - _id: req_039a1ffe71784397b17d6f36f89c3486
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"plate": "BBB-1234",
+        	"year": 2020,
+        	"model": "Marcopolo",
+        	"seats": 20
+        }
+    created: 1606590496688
+    description: |-
+      ### POST /bus
+
+      #### Detalhes:
+
+      DESCRIÇÃO | VALOR
+      ----------|------
+      Rota publica|Não
+
+      #### Parametros:
+
+      NOME | TIPO | OBRIGATÓRIO
+      -----|------|------------
+      plate|String(10)|**Sim**
+      year|Integer|**Sim**
+      model|String(50)|Não
+      seats|Integer|**Sim** (Default = 0)
+
+
+      #### Exemplo:
+
+      Criando um novo registro:
+
+      **URL:**
+      ```
+      POST /bus
+      ```
+
+      **Body:**
+      ```json
+      {
+      	"plate": "ABC-1234",
+      	"year": 2020,
+      	"model": "Masterbus",
+      	"seats": 80
+      }
+      ```
+    headers:
+      - id: pair_c6c66f3f210f42a69a588d699717c808
+        name: authorization
+        value: "{{ token  }}"
+      - id: pair_f3bcf78d4e16490abf0ebf835eade023
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1606582837534
+    method: POST
+    modified: 1606613638652
+    name: /bus
+    parameters: []
+    parentId: fld_8c24a0794a7f47d0a559ea667a3960d8
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ baseUrl  }}/bus"
+    _type: request
+  - _id: req_55c93f5b9ad64daeafd8aaf43fe5f6fa
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"plate": "AAA-1122",
+        	"year": 2019,
+        	"model": "Neobus",
+        	"seats": 15
+        }
+    created: 1606593087318
+    description: |-
+      ### PUT /bus/:id
+
+      #### Detalhes:
+
+      DESCRIÇÃO | VALOR
+      ----------|------
+      Rota publica|Não
+
+      #### Parametros:
+
+      NOME | TIPO | OBRIGATÓRIO
+      -----|------|------------
+      plate|String(10)|Não
+      year|Integer|Não
+      model|String(50)|Não
+      seats|Integer|Não
+
+      #### Exemplo:
+
+      Alterando o **plate** do registro **id** = **3**
+
+      **URL:**
+      ```
+      PUT /bus/3
+      ```
+
+      **Body:**
+      ```json
+      {
+      	"plate": "ABC-1234"
+      }
+      ```
+
+      Alterando o **model e seats** do registro **id** = **1**
+
+      **URL:**
+      ```
+      PUT /bus/1
+      ```
+
+      **Body:**
+      ```json
+      {
+      	"model": "Novo valorMasterbus",
+      	"seats": 11
+      }
+      ```
+    headers:
+      - id: pair_c6c66f3f210f42a69a588d699717c808
+        name: authorization
+        value: "{{ token  }}"
+      - id: pair_f3bcf78d4e16490abf0ebf835eade023
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1606582837509
+    method: PUT
+    modified: 1606613865389
+    name: /bus/:id
+    parameters: []
+    parentId: fld_8c24a0794a7f47d0a559ea667a3960d8
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ baseUrl  }}/bus/1"
+    _type: request
+  - _id: req_4e8a3c1427ed47d985367e7effc93e23
+    authentication: {}
+    body: {}
+    created: 1606591629463
+    description: |-
+      ### DELETE /bus/:id
+
+      #### Detalhes:
+
+      DESCRIÇÃO | VALOR
+      ----------|------
+      Rota publica|Não
+
+      #### Parametros:
+
+      NOME | TIPO | OBRIGATÓRIO
+      -----|------|------------
+      id|int|**Sim**
+
+
+      #### Exemplo:
+
+      Deletando o registr **id** = **3**
+
+      **URL:**
+      ```
+      DELETE /bus/3
+      ```
+    headers:
+      - id: pair_c6c66f3f210f42a69a588d699717c808
+        name: authorization
+        value: "{{ token  }}"
+    isPrivate: false
+    metaSortKey: -1606582837484
+    method: DELETE
+    modified: 1606661669652
+    name: /bus/:id
+    parameters: []
+    parentId: fld_8c24a0794a7f47d0a559ea667a3960d8
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ baseUrl  }}/bus/1"
+    _type: request
+  - _id: req_c5486a79bfd9452fa7c1c2799ce0f7a1
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "login": "thiago",
+          "password": "123456"
+        }
+    created: 1606574557042
+    description: |-
+      ### POST /auth/login
+
+      #### Detalhes:
+
+      DESCRIÇÃO | VALOR
+      ----------|------
+      Rota publica|Sim
+
+      #### Parametros:
+
+      NOME | TIPO | OBRIGATÓRIO
+      -----|------|------------
+      login|String(20)|**Sim**
+      password|String(20)|**Sim**
+
+      #### Exemplo:
+
+      Efetuando login:
+
+      **URL:**
+      ```
+      POST /auth/login
+      ```
+
+      **Body:**
+      ```json
+      {
+      	"login": "thiago.cabral",
+      	"password": f47YpEW2bit
+      }
+      ```
+
+      **Resposta:**
+      ```json
+      {
+        "token": "eyJhbGciOiJIUzI1Ni...",
+        "user": {
+          "id": 1,
+          "name": "THIAGO CABRAL",
+          "photoUrl": "http://app_url/avatar/AiLCJpYXQiOjE2MD"
+        }
+      }
+      ```
+    headers:
+      - id: pair_58ece583f3784c709c28195df85c9934
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1606528115112
+    method: POST
+    modified: 1606613737326
+    name: /auth/login
+    parameters: []
+    parentId: fld_d3223e81da2a4973a51d035f6837b737
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{ baseUrl  }}/auth/login"
+    _type: request
+  - _id: fld_d3223e81da2a4973a51d035f6837b737
+    created: 1606574546670
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1606574546670
+    modified: 1606574546670
+    name: auth
+    parentId: fld_2680bce698a6424899e3b048519452ef
+    _type: request_group
+  - _id: env_9d05b05dbfedd1745f76e3117bc8c0206debd5ad
+    color: null
+    created: 1570640717513
+    data:
+      baseUrl: http://localhost:3000
+      token: Bearer
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IlRISUFHTyBDQUJSQUwiLCJwaG90b1VybCI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMC9hdmF0YXIvOGRlMmE2Yzg2ZDZmMTU3ZTIzZjU0YmZjZjZmYWVkNDYiLCJsb2dpbiI6InRoaWFnbyIsImlhdCI6MTYwNjYxMzczOH0.m04CmHcNTj1gR6jctPrHXnd_ZYl34QvZlTaqbo4yREg
+    dataPropertyOrder:
+      "&":
+        - baseUrl
+        - token
+    isPrivate: false
+    metaSortKey: 1570640717513
+    modified: 1606613757514
+    name: Base Environment
+    parentId: wrk_fbfab78c51ed4f409f1b3cc6c24aa11d
+    _type: environment
+  - _id: jar_9d05b05dbfedd1745f76e3117bc8c0206debd5ad
+    cookies:
+      - creation: 2019-10-22T13:13:09.563Z
+        domain: app.immail.com.br
+        expires: 2019-10-29T13:13:48.000Z
+        hostOnly: true
+        id: "7227081632662531"
+        key: AWSALB
+        lastAccessed: 2019-10-22T13:13:48.477Z
+        path: /
+        value: K/PA0p/2LhR4yRmasS0AycoLGnxJnttB4LFOgC6R3cBBbg36H0xqMlVnQMPMN0nESv8oJPLgsnMK3r3XbgDYEDoAiVIrk+KoP+i6wVjgYt035mRLqFfk3RPek9Bi
+      - creation: 2020-05-06T17:58:35.815Z
+        domain: www.1secmail.com
+        hostOnly: true
+        id: "39615835576223524"
+        key: PHPSESSID
+        lastAccessed: 2020-05-06T17:58:35.815Z
+        path: /
+        value: 9fd722d5cacb6cfa86c6b1abe4644d33
+      - creation: 2020-06-10T19:28:33.080Z
+        domain: sendinblue.com
+        expires: 2020-07-10T19:28:32.000Z
+        extensions:
+          - SameSite=Lax
+        hostOnly: false
+        httpOnly: true
+        id: "5186498970153013"
+        key: __cfduid
+        lastAccessed: 2020-06-10T19:28:33.080Z
+        path: /
+        value: da1296114696c01047518d01e3a2134791591817312
+    created: 1570640717523
+    modified: 1591817313082
+    name: Default Jar
+    parentId: wrk_fbfab78c51ed4f409f1b3cc6c24aa11d
+    _type: cookie_jar
