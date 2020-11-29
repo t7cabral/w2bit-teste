@@ -42,4 +42,8 @@ app.use('/bus', routerBus);
 app.use('/passenger', routerPassenger);
 app.use('/ticket', routerTicket);
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname + '/README.html'));
+});
+
 module.exports = app;

@@ -2,8 +2,6 @@
 
 .vscode/*
 
-/*.env
-
 avatar/*
 !avatar/.gitkeep
 
